@@ -1,4 +1,4 @@
- import pygame, sys
+import pygame, sys
 from pygame.locals import *
 import time
 from threading import Thread
