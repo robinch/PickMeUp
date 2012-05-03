@@ -89,7 +89,4 @@ def changeBG():
 changeLoop = Thread(target=changeBG)
 <<<<<<< HEAD
 gameLoop()
-=======
-
-#This row is to check if it updates
 >>>>>>> b99d15a577a2bd21199da7ab3d34ade38328dd37
