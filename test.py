@@ -1,24 +1,18 @@
-import pygame, sys
+ import pygame, sys
 from pygame.locals import *
 import time
 from threading import Thread
 
 pygame.init()
+
 background = (pygame.image.load('bg.jpg'), pygame.image.load('eiffel_tower.jpg'), pygame.image.load('cloudy_sky.jpg'))
 bg = background[0]
-bg = pygame.image.load('bg.jpg')
-
-def bgLoop():
-	while True:
-		time.sleep(10)
-		changeBg()
-	return
 
 # run the game loop
 def gameLoop():
 	global bg
-	global bgThread
-	bgThread.start()
+	global changeLoop
+	changeLoop.start()
 	FPS = 30 # frames per second setting
 	fpsClock = pygame.time.Clock()
 	
@@ -65,7 +59,8 @@ def gameLoop():
 			catY -= 5
 			if catY == 10:
 				direction = 'right'
-		
+
+		DISPLAYSURF.blit(bg, (0, 0))
 		DISPLAYSURF.blit(catImg, (catX, catY))
 
 		#event handler
@@ -78,17 +73,19 @@ def gameLoop():
 		pygame.display.update()
 		fpsClock.tick(FPS)
 	return
-
-def changeBg():
+ 
+def changeBG():
 	global bg
-	if bg == background[0]:
-		bg = background[1]
-	if bg == background[1]:
-		bg = background[2]
-	if bg == background[2]:
-		bg = background[0]
+	while True:
+		time.sleep(3)
+		if bg == background[0]:
+			bg = background[1]
+		elif bg == background[1]:
+			bg = background[2]
+		elif bg == background[2]:
+			bg = background[0]
 	return
 
-bgThread = Thread(target=bgLoop)
-gameThread = Thread(target=gameLoop)
-gameThread.start()
+changeLoop = Thread(target=changeBG)
+gameLoop()
+#This row is to check if it updates
