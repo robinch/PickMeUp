@@ -87,6 +87,4 @@ def changeBG():
 	return
 
 changeLoop = Thread(target=changeBG)
-<<<<<<< HEAD
 gameLoop()
->>>>>>> b99d15a577a2bd21199da7ab3d34ade38328dd37
