@@ -43,24 +43,6 @@ def gameLoop():
 	pygame.mixer.music.play(-1, 0.0)
 	while  True:	
 		DISPLAYSURF.blit(bg, (0, 0))
-		if direction == 'right':
-			catX += 5
-			if catX == 280:
-				direction = 'down'
-		elif direction == 'down':
-			catY += 5
-			if catY == 220:
-				direction = 'left'
-		elif direction == 'left':
-			catX -= 5
-			if catX == 10:
-				direction = 'up'
-		elif direction == 'up':
-			catY -= 5
-			if catY == 10:
-				direction = 'right'
-
-		DISPLAYSURF.blit(bg, (0, 0))
 		DISPLAYSURF.blit(catImg, (catX, catY))
 
 		#event handler
@@ -68,6 +50,18 @@ def gameLoop():
 			if event.type == QUIT:
 				pygame.quit()
 				sys.exit()
+			elif event.type == pygame.KEYDOWN:
+				# Figure out if it was an arrow key. If so
+            	# adjust speed.
+				if event.key == pygame.K_LEFT:
+					catX -= 5
+				if event.key == pygame.K_RIGHT:
+					catX += 5
+				if event.key == pygame.K_UP:
+					catY -= 3
+				if event.key == pygame.K_DOWN:
+					catY += 3
+
 			pygame.display.update()
 	
 		pygame.display.update()
