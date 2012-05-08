@@ -12,6 +12,7 @@ bg = background[0]
 def gameLoop():
 	global bg
 	global changeLoop
+	pygame.key.set_repeat(3,1)
 	changeLoop.start()
 	FPS = 30 # frames per second setting
 	fpsClock = pygame.time.Clock()
