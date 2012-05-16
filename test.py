@@ -34,8 +34,11 @@ def gameLoop():
 	
 	# set up catimage
 	catImg = pygame.image.load('cat.png')
+	#cat2Img = pygame.image.load('cat.png')
 	catX = 10
 	catY = 10
+	#cat2X = 200
+	#cat2Y = 200
 	direction = 'right'
 	
 	# set up sound
@@ -45,7 +48,7 @@ def gameLoop():
 	while  True:	
 		DISPLAYSURF.blit(bg, (0, 0))
 		DISPLAYSURF.blit(catImg, (catX, catY))
-
+		#DISPLAYSURF.blit(cat2Img, (cat2X, cat2Y))
 		#event handler
 		for event in pygame.event.get():
 			if event.type == QUIT:
@@ -62,7 +65,16 @@ def gameLoop():
 					catY -= 3
 				if event.key == pygame.K_DOWN:
 					catY += 3
-
+				#uncoment if you want to enable 2 player
+				#if event.key == pygame.K_a:
+				#	cat2X -= 5
+				#if event.key == pygame.K_d:
+				#	cat2X += 5
+				#if event.key == pygame.K_w:
+				#	cat2Y -= 3
+				#if event.key == pygame.K_s:
+				#	cat2Y += 3
+	
 			pygame.display.update()
 	
 		pygame.display.update()
